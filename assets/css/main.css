@@ -1654,3 +1654,102 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+/* ------------------------------
+   VR Section Styling
+------------------------------ */
+#vr {
+  padding: 60px 0;
+  background-color: #f8f8f8;
+}
+
+#vr .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#vr .section-title h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#vr .section-title p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+#vr .row {
+  margin-bottom: 30px;
+}
+
+#vr .content {
+  padding: 20px;
+}
+
+#vr .content h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#vr .content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+#vr .btn-primary {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+#vr .btn-primary:hover {
+  background-color: #ff4b3e;
+}
+
+#vr .img-fluid {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Pulsating effect cho nút play */
+#vr .pulsating-play-btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+#vr .pulsating-play-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 111, 97, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  animation: pulsate 1.5s infinite;
+  z-index: -1;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}

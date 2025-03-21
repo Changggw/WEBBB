@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quán Ăn trên Bản Đồ</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlCxcyJ3jaRH0oXKhWJb58VirQ2Jszri8&callback=initMap" 
+    async defer></script>
+    <style>
+      /* Đặt kích thước cho bản đồ */
+      #map {
+        height: 500px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Quán Ăn tại Cần Thơ</h3>
+    <div id="map"></div>
+
+    <script>
+      var map;
+      var markers = [
+        {lat: 10.0236, lng: 105.7772, name: "Quán Ăn A", image: "url_to_image_a"},
+        {lat: 10.0240, lng: 105.7780, name: "Quán Ăn B", image: "url_to_image_b"}
+      ];
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat: 10.0236, lng: 105.7772} // Cần Thơ
+        });
+
+        markers.forEach(function(markerData) {
+          var marker = new google.maps.Marker({
+            position: {lat: markerData.lat, lng: markerData.lng},
+            map: map,
+            title: markerData.name
+          });
+
+          var infoWindow = new google.maps.InfoWindow({
+            content: `<h4>${markerData.name}</h4><img src="${markerData.image}" alt="${markerData.name}" style="width: 100px;">`
+          });
+
+          marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
