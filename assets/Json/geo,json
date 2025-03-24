@@ -1,0 +1,56 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cần Thơ",
+        "restaurants": [
+          {
+            "name": "Quán Ăn Cần Thơ",
+            "address": "123 Đường 1, Cần Thơ",
+            "image": "assets/img/restaurant_1.jpg"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[105.75, 10.0], [105.8, 10.0], [105.8, 10.05], [105.75, 10.05], [105.75, 10.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TP. Hồ Chí Minh",
+        "restaurants": [
+          {
+            "name": "Quán Ăn TP. Hồ Chí Minh",
+            "address": "456 Đường 2, TP.HCM",
+            "image": "assets/img/restaurant_2.jpg"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[106.6, 10.8], [106.65, 10.8], [106.65, 10.85], [106.6, 10.85], [106.6, 10.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vũng Tàu",
+        "restaurants": [
+          {
+            "name": "Quán Ăn Vũng Tàu",
+            "address": "789 Đường 3, Vũng Tàu",
+            "image": "assets/img/restaurant_3.jpg"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[107.05, 10.35], [107.1, 10.35], [107.1, 10.4], [107.05, 10.4], [107.05, 10.35]]]
+      }
+    }
+  ]
+}

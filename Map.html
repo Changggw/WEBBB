@@ -1,50 +1,118 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Quán Ăn trên Bản Đồ</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlCxcyJ3jaRH0oXKhWJb58VirQ2Jszri8&callback=initMap" 
-    async defer></script>
-    <style>
-      /* Đặt kích thước cho bản đồ */
-      #map {
-        height: 500px;
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <h3>Quán Ăn tại Cần Thơ</h3>
-    <div id="map"></div>
+<html lang="en">
 
-    <script>
-      var map;
-      var markers = [
-        {lat: 10.0236, lng: 105.7772, name: "Quán Ăn A", image: "url_to_image_a"},
-        {lat: 10.0240, lng: 105.7780, name: "Quán Ăn B", image: "url_to_image_b"}
-      ];
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Măm Măm Miền Tây</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: {lat: 10.0236, lng: 105.7772} // Cần Thơ
-        });
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        markers.forEach(function(markerData) {
-          var marker = new google.maps.Marker({
-            position: {lat: markerData.lat, lng: markerData.lng},
-            map: map,
-            title: markerData.name
-          });
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap"
+    rel="stylesheet">
 
-          var infoWindow = new google.maps.InfoWindow({
-            content: `<h4>${markerData.name}</h4><img src="${markerData.image}" alt="${markerData.name}" style="width: 100px;">`
-          });
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-          marker.addListener('click', function() {
-            infoWindow.open(map, marker);
-          });
-        });
-      }
-    </script>
-  </body>
+  <!-- Leaflet.js for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Yummy
+  * Template URL: https://bootstrapmade.com/MamMamMienTay
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="/assets/img/logo.png" alt="">
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html#menu">Store</a></li>
+          <li><a href="Map.html">Explore cuisine</a></li>
+          <li><a href="VRE.html">Virtual Reality Experience</a></li>
+          <li><a href="#Cooking">Cooking instructions</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="index.html#book-a-table">Book a Set</a>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Map Section -->
+    <section id="map" class="map section">
+      <div class="container">
+        <h2>Explore Cuisine by Region</h2>
+        <div id="mapid" style="height: 500px;"></div>
+      </div>
+    </section>
+
+  </main>
+
+   <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+   <!-- Leaflet.js for Map  -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <script>
+    var map = L.map('mapid').setView([10.0, 105.0], 7);  // Center map at Vietnam
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Load GeoJSON data
+    fetch('provinces.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          onEachFeature: function (feature, layer) {
+            var popupContent = '<b>' + feature.properties.name + '</b><br>';
+            feature.properties.restaurants.forEach(function (restaurant) {
+              popupContent += '<img src="' + restaurant.image + '" alt="' + restaurant.name + '" style="width:100%;"><br>' +
+                              'Địa chỉ: ' + restaurant.address + '<br>';
+            });
+            layer.bindPopup(popupContent);
+          }
+        }).addTo(map);
+      });
+  </script>
+
+
+
+</body>
+
 </html>
