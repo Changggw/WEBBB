@@ -88,28 +88,64 @@
 
   <script>
     var map = L.map('mapid').setView([10.0, 105.0], 7);  // Center map at Vietnam
-
+  
     // Add OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+  
+    // Thêm các điểm đánh dấu
+    var locations = [
+      { name: "Nhà Hàng Bến Ninh Kiều", lat: 10.0341, lng: 105.7862, info: "Chuyên các món hải sản tươi sống." }
+    ];
 
-    // Load GeoJSON data
-    fetch('provinces.geojson')
-      .then(response => response.json())
-      .then(data => {
-        L.geoJSON(data, {
-          onEachFeature: function (feature, layer) {
-            var popupContent = '<b>' + feature.properties.name + '</b><br>';
-            feature.properties.restaurants.forEach(function (restaurant) {
-              popupContent += '<img src="' + restaurant.image + '" alt="' + restaurant.name + '" style="width:100%;"><br>' +
-                              'Địa chỉ: ' + restaurant.address + '<br>';
-            });
-            layer.bindPopup(popupContent);
-          }
-        }).addTo(map);
-      });
+    L.marker([10.0269306, 105.7641724]).addTo(map)
+    .bindPopup("<b>Quán ANH MẬP</b><br>Chuyên các món ăn miền Tây ngon miệng.<br><a href='https://www.google.com/maps/place/Qu%C3%A1n+ANH+M%E1%BA%ACP/@10.0269306,105.7615975,17z/' target='_blank'>Xem trên Google Maps</a>")
+    .openPopup();
+
+    // Thêm điểm đánh dấu cho địa điểm XPV3+9W6, Mỹ Khánh, Phong Điền, Cần Thơ
+    L.marker([10.029139, 105.712370]).addTo(map)
+    .bindPopup("<b>XPV3+9W6, Mỹ Khánh, Phong Điền, Cần Thơ</b><br>Địa điểm ẩm thực nổi bật.<br><a href='https://www.google.com/maps?q=10.029139,105.712370' target='_blank'>Xem trên Google Maps</a>")
+    .openPopup();
+
+    L.marker([10.032034, 105.768759]).addTo(map)
+    .bindPopup("<b>14 476, An Bình, Ninh Kiều, Cần Thơ</b><br><a href='https://www.google.com/maps?q=10.032034,105.768759' target='_blank'>Xem trên Google Maps</a>");
+
+      // Thêm điểm đánh dấu cho 14 Phan Đình Phùng, Tân An, Ninh Kiều, Cần Thơ
+  L.marker([10.034221, 105.787979]).addTo(map)
+    .bindPopup("<b>14 Phan Đình Phùng, Tân An, Ninh Kiều, Cần Thơ</b><br><a href='https://www.google.com/maps?q=10.034221,105.787979' target='_blank'>Xem trên Google Maps</a>");
+    
+    // Thêm điểm đánh dấu cho 71 Đường Hai Bà Trưng, Tân An, Ninh Kiều, Cần Thơ
+  L.marker([10.034814, 105.786631]).addTo(map)
+    .bindPopup("<b>71 Đường Hai Bà Trưng, Tân An, Ninh Kiều, Cần Thơ</b><br><a href='https://www.google.com/maps?q=10.034814,105.786631' target='_blank'>Xem trên Google Maps</a>");
+
+// Thêm điểm đánh dấu cho XPQ5+MM, Phong Điền, Cần Thơ
+L.marker([9.962472, 105.697235]).addTo(map)
+    .bindPopup("<b>XPQ5+MM, Phong Điền, Cần Thơ</b><br><a href='https://www.google.com/maps?q=9.962472,105.697235' target='_blank'>Xem trên Google Maps</a>");
+
+ // Thêm điểm đánh dấu cho Chợ Đêm Ninh Kiều, Cần Thơ
+ L.marker([10.034083, 105.786655]).addTo(map)
+    .bindPopup("<b>Chợ Đêm Ninh Kiều, Cần Thơ</b><br><a href='https://www.google.com/maps?q=10.034083,105.786655' target='_blank'>Xem trên Google Maps</a>");
+
+     // Thêm điểm đánh dấu cho Nhà Cổ Bình Thủy, Cần Thơ
+  L.marker([10.059233, 105.737892]).addTo(map)
+    .bindPopup("<b>Nhà Cổ Bình Thủy, Cần Thơ</b><br><a href='https://www.google.com/maps?q=10.059233,105.737892' target='_blank'>Xem trên Google Maps</a>");
+
+// Thêm điểm đánh dấu cho Chợ Cổ Cần Thơ
+L.marker([10.033104, 105.786660]).addTo(map)
+    .bindPopup("<b>Chợ Cổ Cần Thơ</b><br><a href='https://www.google.com/maps?q=10.033104,105.786660' target='_blank'>Xem trên Google Maps</a>");
+
+
+
+
+
+    locations.forEach(location => {
+      L.marker([location.lat, location.lng]).addTo(map)
+        .bindPopup(`<b>${location.name}</b><br>${location.info}`);
+    });
+  
   </script>
+  
 
 
 
