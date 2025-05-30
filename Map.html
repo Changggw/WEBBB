@@ -56,7 +56,6 @@
           <li><a href="index.html#menu">Store</a></li>
           <li><a href="Map.html">Explore cuisine</a></li>
           <li><a href="VRE.html">Virtual Reality Experience</a></li>
-          <li><a href="#Cooking">Cooking instructions</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -87,7 +86,7 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
   <script>
-    var map = L.map('mapid').setView([10.0, 105.0], 7);  // Center map at Vietnam
+    var map = L.map('mapid').setView([10.0, 105.0], 8);  // Center map at Vietnam
   
     // Add OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -105,7 +104,7 @@
 
     // Thêm điểm đánh dấu cho địa điểm XPV3+9W6, Mỹ Khánh, Phong Điền, Cần Thơ
     L.marker([10.029139, 105.712370]).addTo(map)
-    .bindPopup("<b>XPV3+9W6, Mỹ Khánh, Phong Điền, Cần Thơ</b><br>Địa điểm ẩm thực nổi bật.<br><a href='https://www.google.com/maps?q=10.029139,105.712370' target='_blank'>Xem trên Google Maps</a>")
+    .bindPopup("<b>Vườn Trái Cây Mỹ Khánh</b><br>Địa điểm ẩm thực nổi bật.<br><a href='https://www.google.com/maps?q=10.029139,105.712370' target='_blank'>Xem trên Google Maps</a>")
     .openPopup();
 
     L.marker([10.032034, 105.768759]).addTo(map)
