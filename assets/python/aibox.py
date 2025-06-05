@@ -1,6 +1,4 @@
 import gradio as gr
 
-def reply(message):
-    return "Bạn hỏi: " + message + " — đây là câu trả lời mẫu."
-
-gr.ChatInterface(reply, title="Măm Măm Bot").launch()
+def reply(msg): return "Bạn hỏi: " + msg
+demo = gr.ChatInterface(fn=reply, title="Măm Măm Bot")

@@ -1008,49 +1008,6 @@
 
     </section><!-- /Book A Table Section -->
 
-    <!-- AI Chatbox -->
-    <!-- Nút mở chat -->
-<div id="chat-toggle-btn" onclick="toggleChatbot()">
-  <span>💬</span>
-</div>
-
-<!-- Hộp chat -->
-<div id="chatbot-frame">
-  <iframe src="https://mammam-bot.hf.space" width="350" height="450" style="border: none;"></iframe>
-</div>
-
-<style>
-  #chat-toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: red;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: white;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 9999;
-  }
-
-  #chatbot-frame {
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
-    display: none;
-    z-index: 9998;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-</style>
-
-
-
   </main>
 
   <footer id="footer" class="footer dark-background">
@@ -1135,6 +1092,73 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+
+  <!-- AI Chatbox -->
+
+  <!-- Chatbot Nút Tròn -->
+  <div id="chat-toggle" onclick="toggleChatbox()"><img src="assets/img/Artboard 6@4x.png" alt="atchatbox"></div>
+
+  <!-- Chatbot Iframe -->
+  <div id="chatbox-frame">
+    <iframe src="https://chatbot-ui-five-sigma-30.vercel.app" width="370" height="500" style="border: none;"></iframe>
+  </div>
+
+  <style>
+    #chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 30px;
+      background-color: #fcf9ce;
+      color: white;
+      width: 80px;
+      height: 80px;
+      font-size: 26px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 52px;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #chatbox-frame {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      display: none;
+      z-index: 9998;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #chat-toggle img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      padding-top: 14px; 
+      display: block;
+      margin: auto;
+    }
+
+    @media screen and (max-width: 600px) {
+      #chatbox-frame {
+        width: 90vw;
+        height: 80vh;
+        left: 5vw;
+      }
+    }
+  </style>
+
+  <script>
+    function toggleChatbox() {
+      const frame = document.getElementById("chatbox-frame");
+      frame.style.display = frame.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
 
 </body>
 
