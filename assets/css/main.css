@@ -804,7 +804,26 @@ section,
   display: flex;
   align-items: center;
 }
+/* code moi */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Đặt lớp nền ở phía sau */
+  opacity: 0.5; /* Đặt độ trong suốt của lớp nền */
+  background-image: url('Back2.jpg'); /* Đặt hình nền */
+}
 
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
 .hero h1 {
   margin: 0;
   font-size: 64px;
